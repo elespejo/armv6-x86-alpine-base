@@ -8,6 +8,6 @@ ORG="elespejo"
 REPO="armv6-x86-alpine-base"
 
 
-docker tag $REPO $ORG/$REPO:$VERSION 
+docker tag $REPO $ORG/$REPO:$TAG 
 docker login -u "$USER" -p "$PASS"
-docker push $ORG/$REPO:$VERSION
+docker push $ORG/$REPO:$TAG
