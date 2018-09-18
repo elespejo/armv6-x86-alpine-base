@@ -13,13 +13,7 @@ env:
   - secure: Lnb3Yf0HygGdTXtuiNejDC9reGZt+sUsZcXen/DLDM4y9hQ59KnNN38aZm2I5sYcARydZPyMosaZ6bQdZ8IVy0tJ35QjwRUxLatZY77H88cezqQStDt/sS22OUV/16qRv1RM6lIyqu++BrHHIp2X9tzThA3VOFtry4bZPbs+8LWxfMlnlWBHVAz4aIq6gpPMiaMrz9U8aWb47vF0vNJJJfdrFtPvQ8rs+Uwuhe5X5lFaGlHO7MjGi7lmXu4S5cvd3/Huf1er2ZUc6hLe2AgzQ+cosCnw1JNq1GTwzw1/8QT8E6X5E8zckoKe7poAzmFlhL0rBppu/+vbpkEofuhiRGjrBxvnDjR1V1yQrFV/xZC06jbAlpg9+1F28sHgukpg+/j/bnz4dHX0YWk0m1/w8JtKUQMVrddJ7jJtu0pllmrwJWxp4qYXoVm8J7Og+lsA7e41IcAtMbEy1WflwTdLygP+Y4Xash/gWOTXOyt14Wl9rMoW/s6+azrRl4GFLDNegfdu2SCMFtIa4Nk7hZt1XtrUDq0u6bBSDFMUC+mfcDsMsSpBCxQf+TTTge6F8vE8Qtx45qzel6nrPNife4mZV2FNJoLNqG8+2qD5UAl8rvKPkR0RLe4W8T0DM1RhWbqNlMG5v57b5wl0SSjQ0gPutC3LFMyd/+mpREVtelX9OKc=
 services:
 - docker
-before_install:
-- sudo apt-get update
-- sudo apt-get install -y --no-install-recommends qemu-user-static binfmt-support
-- sudo update-binfmts --enable qemu-arm
-- sudo update-binfmts --display qemu-arm
-- sudo sh -c "echo ':arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-arm-static:'
-  > /proc/sys/fs/binfmt_misc/register"
+before_install: ./build/prepare.sh
 install: true
 script:
 - "./build/build.sh"
